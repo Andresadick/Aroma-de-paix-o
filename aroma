@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aroma da Paixão</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgb(0 0 0 / 0.1);
+      max-width: 350px;
+      width: 100%;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+      font-weight: 700;
+      font-size: 28px;
+    }
+    input[type="email"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    button {
+      background: #d6336c;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      font-size: 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background: #a82a53;
+    }
+    small {
+      display: block;
+      margin-top: 10px;
+      color: #666;
+    }
+    .contact-info {
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #555;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Aroma da Paixão</h1>
+
+    <div class="contact-info">
+      <p><strong>WhatsApp:</strong> +55 11 93352-1484</p>
+      <p><strong>E-mail:</strong> acsgestaoemarketing@gmail.com</p>
+    </div>
+
+    <form id="contactForm">
+      <input
+        type="email"
+        id="email"
+        placeholder="Digite seu e-mail"
+        required
+      />
+      <button type="submit">Enviar</button>
+      <small>Entraremos em contato em breve!</small>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById('email').value.trim();
+
+      if (!email.includes('@')) {
+        alert('Por favor, digite um e-mail válido.');
+        return;
+      }
+
+      const whatsappNumber = '5511933521484'; // número fixo, só números e DDD
+      const message = encodeURIComponent(`Olá, tenho interesse no Aroma da Paixão. Meu e-mail é ${email}.`);
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
+
+      window.open(whatsappUrl, '_blank');
+      alert('Obrigado pelo contato! Você será redirecionado para o WhatsApp.');
+
+      form.reset();
+    });
+  </script>
+</body>
+</html>
